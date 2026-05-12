@@ -2,7 +2,9 @@ package com.example.demo1.controllers;
 
 import com.example.demo1.dto.Book;
 import com.example.demo1.exception.ResourceNotFoundException;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -48,5 +50,10 @@ public class BooksController {
 
         existingBook.setName(newName);
         existingBook.setAuthor(newAuthor);
+    }
+
+    @DeleteMapping("/{bookId}")
+    public void deleteBook(@PathVariable Integer bookId) {
+        books.removeIf(book -> book.getId().equals(bookId));
     }
 }
