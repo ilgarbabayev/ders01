@@ -2,6 +2,7 @@ package com.example.demo1.controllers;
 
 import com.example.demo1.dto.Book;
 import com.example.demo1.exception.ResourceNotFoundException;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,12 +35,12 @@ public class BooksController {
     }
 
     @PostMapping
-    public void addBook(@RequestBody Book book) {
+    public void addBook(@RequestBody @Valid Book book) {
         books.add(book);
     }
 
     @PutMapping
-    public void updateBook(@RequestBody Book book) {
+    public void updateBook(@RequestBody @Valid Book book) {
         Book existingBook = books.stream()
                 .filter(b -> Objects.equals(b.getId(), book.getId()))
                 .findFirst()
