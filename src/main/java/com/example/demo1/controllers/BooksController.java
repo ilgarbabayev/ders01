@@ -1,5 +1,6 @@
 package com.example.demo1.controllers;
 
+import com.example.demo1.dto.Author;
 import com.example.demo1.dto.Book;
 import com.example.demo1.exception.ResourceNotFoundException;
 import jakarta.validation.Valid;
@@ -47,7 +48,7 @@ public class BooksController {
                 .orElseThrow(() -> new ResourceNotFoundException("Book not found"));
 
         final String newName = book.getName();
-        final String newAuthor = book.getAuthor();
+        final Author newAuthor = book.getAuthor();
 
         existingBook.setName(newName);
         existingBook.setAuthor(newAuthor);

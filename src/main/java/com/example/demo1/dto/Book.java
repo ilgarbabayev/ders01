@@ -1,5 +1,6 @@
 package com.example.demo1.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -26,8 +27,9 @@ public class Book {
     @NotBlank
     private String name;
 
-    @NotBlank
-    private String author;
+    @NotNull
+    @Valid
+    private Author author;
 
     @NotBlank
     @Email(message = "Email format must be correct")
