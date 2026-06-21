@@ -1,3 +1,22 @@
 spring:
   application:
     name: Demo1
+  datasource:
+    port: 5432
+    url: jdbc:postgresql://localhost:5432/demo_1
+    username: postgres
+    password: postgres
+    hikari:
+      schema: book_store
+      connectionTimeout: 20000
+      maxLifetime: 900000
+      maximumPoolSize: 5
+  flyway:
+    defaultSchema: book_store
+  jpa:
+    show-sql: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
