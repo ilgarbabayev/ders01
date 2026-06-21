@@ -7,15 +7,25 @@ spring:
     username: postgres
     password: postgres
     hikari:
-      schema: book_store
       connectionTimeout: 20000
       maxLifetime: 900000
       maximumPoolSize: 5
   flyway:
-    defaultSchema: book_store
+    enabled: true
+    locations: classpath:db/migration
+    default-schema: book_store
+    schemas:
+      - book_store
+logging:
+  level:
+    org.flywaydb: DEBUG
+
   jpa:
     show-sql: true
     open-in-view: false
+    properties:
+      hibernate:
+        default_schema: book_store
     hibernate:
       ddl-auto: validate
       naming:
